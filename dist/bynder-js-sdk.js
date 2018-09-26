@@ -416,6 +416,26 @@ var Bynder = function () {
         }
 
         /**
+         * Delete an existing asset.
+         * @see {@link http://docs.bynder.apiary.io/#reference/assets/specific-asset-operations/delete-asset|API Call}
+         * @param {Object} params={} - An object containing the id of the asset to be deleted.
+         * @param {String} params.id - The id of the asset.
+         * @return {Promise} Object - Returns a Promise that, when fulfilled, will either return an empty Object in
+         * case it's successful or an Error with the problem.
+         */
+
+    }, {
+        key: 'deleteMedia',
+        value: function deleteMedia(_ref2) {
+            var id = _ref2.id;
+
+            if (!id) {
+                return rejectValidation('media', 'id');
+            }
+            return this.api.send('DELETE', 'v4/media/' + id + '/');
+        }
+
+        /**
          * Get all the metaproperties
          * @see {@link http://docs.bynder.apiary.io/#reference/metaproperties/retrieve-metaproperties|API Call}
          * @param {Object} params={} - An object containing the parameters accepted by the API to narrow the query.
@@ -447,8 +467,8 @@ var Bynder = function () {
     }, {
         key: 'getMetaproperty',
         value: function getMetaproperty() {
-            var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-                id = _ref2.id;
+            var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+                id = _ref3.id;
 
             if (!id) {
                 return rejectValidation('metaproperty', 'id');
@@ -485,10 +505,10 @@ var Bynder = function () {
     }, {
         key: 'editMetaproperty',
         value: function editMetaproperty() {
-            var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+            var _ref4 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-            var id = _ref3.id,
-                params = _objectWithoutProperties(_ref3, ['id']);
+            var id = _ref4.id,
+                params = _objectWithoutProperties(_ref4, ['id']);
 
             if (!id) {
                 return rejectValidation('metaproperty', 'id');
@@ -509,8 +529,8 @@ var Bynder = function () {
     }, {
         key: 'deleteMetaproperty',
         value: function deleteMetaproperty() {
-            var _ref4 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-                id = _ref4.id;
+            var _ref5 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+                id = _ref5.id;
 
             if (!id) {
                 return rejectValidation('metaproperty', 'id');
@@ -531,10 +551,10 @@ var Bynder = function () {
     }, {
         key: 'saveNewMetapropertyOption',
         value: function saveNewMetapropertyOption() {
-            var _ref5 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+            var _ref6 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-            var id = _ref5.id,
-                params = _objectWithoutProperties(_ref5, ['id']);
+            var id = _ref6.id,
+                params = _objectWithoutProperties(_ref6, ['id']);
 
             if (!id || !params.name) {
                 return rejectValidation('metaproperty option', 'id or name');
@@ -557,10 +577,10 @@ var Bynder = function () {
     }, {
         key: 'editMetapropertyOption',
         value: function editMetapropertyOption() {
-            var _ref6 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+            var _ref7 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-            var id = _ref6.id,
-                params = _objectWithoutProperties(_ref6, ['id']);
+            var id = _ref7.id,
+                params = _objectWithoutProperties(_ref7, ['id']);
 
             if (!id || !params.optionId) {
                 return rejectValidation('metaproperty option', 'id or optionId');
@@ -582,9 +602,9 @@ var Bynder = function () {
 
     }, {
         key: 'deleteMetapropertyOption',
-        value: function deleteMetapropertyOption(_ref7) {
-            var id = _ref7.id,
-                optionId = _ref7.optionId;
+        value: function deleteMetapropertyOption(_ref8) {
+            var id = _ref8.id,
+                optionId = _ref8.optionId;
 
             if (!id || !optionId) {
                 return rejectValidation('metaproperty option', 'id or optionId');
@@ -724,8 +744,8 @@ var Bynder = function () {
     }, {
         key: 'getCollection',
         value: function getCollection() {
-            var _ref8 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-                id = _ref8.id;
+            var _ref9 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+                id = _ref9.id;
 
             if (!id) {
                 return rejectValidation('collection', 'id');
@@ -767,9 +787,9 @@ var Bynder = function () {
     }, {
         key: 'addMediaToCollection',
         value: function addMediaToCollection() {
-            var _ref9 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-                id = _ref9.id,
-                data = _ref9.data;
+            var _ref10 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+                id = _ref10.id,
+                data = _ref10.data;
 
             if (!id) {
                 return rejectValidation('collection', 'id');
@@ -793,9 +813,9 @@ var Bynder = function () {
     }, {
         key: 'deleteMediaFromCollection',
         value: function deleteMediaFromCollection() {
-            var _ref10 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-                id = _ref10.id,
-                deleteIds = _ref10.deleteIds;
+            var _ref11 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+                id = _ref11.id,
+                deleteIds = _ref11.deleteIds;
 
             if (!id) {
                 return rejectValidation('collection', 'id');
@@ -822,10 +842,10 @@ var Bynder = function () {
     }, {
         key: 'shareCollection',
         value: function shareCollection() {
-            var _ref11 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+            var _ref12 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-            var id = _ref11.id,
-                params = _objectWithoutProperties(_ref11, ['id']);
+            var id = _ref12.id,
+                params = _objectWithoutProperties(_ref12, ['id']);
 
             if (!id) {
                 return rejectValidation('collection', 'id');
